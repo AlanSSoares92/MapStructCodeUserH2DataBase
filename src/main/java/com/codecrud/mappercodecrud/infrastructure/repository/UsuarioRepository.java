@@ -6,8 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<UserEntity, Long> {
 
-    UserEntity findByEmail(String email);
+  public String findById(UserEntity id);
 
-    @Transactional
-    void deleteByEmail(String email);
+    void deleteById(Long id);
 }

@@ -21,7 +21,7 @@ public class UsuarioService {
 
 
     public UserResponseDTO salvarUsuario(UserRequestDTO request) {
-        // retorno =respostaDto(convertendo de entidade para dto>
+        // retorno = respostaDto(convertendo de entidade para dto>
         // dentro do repository.save (passando conversão de requestDTO para entidade) e a conversão
         //para o retorno como DTO ja foi iniciada no return.
         return mapper.toUserResponseDTO(
@@ -30,14 +30,17 @@ public class UsuarioService {
     }
 
     public List<UserResponseDTO> pegarTodosUsuarios() {
+
         return mapper.todosParaListaResponseDTO(repository.findAll());
     }
 
-    public UserResponseDTO pegarPorEmail(String email) {
-        return mapper.toUserResponseDTO(repository.findByEmail(email));
+    public UserResponseDTO findById(Long id) {
+
+        return mapper.toUserResponseDTO(repository.getById(id));
     }
 
-    public void deletarPorEmail(String email) {
-        repository.deleteByEmail(email);
+    public void deleteById(Long id){
+        repository.deleteById(id);
     }
+
 }
